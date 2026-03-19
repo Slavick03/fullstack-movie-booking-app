@@ -56,6 +56,13 @@ export const newBooking = async (data) => {
   );
 };
 
+export const getBookedSeats = async (movieId, date) => {
+  return request(
+    () => axios.get(`/booking/movie/${movieId}/seats`, { params: { date } }),
+    "Unable to fetch booked seats"
+  );
+};
+
 export const getUserBooking = async () => {
   const id = localStorage.getItem("userId");
 

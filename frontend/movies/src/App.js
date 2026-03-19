@@ -11,6 +11,7 @@ import Booking from "./components/Bookings/Booking";
 import UserProfile from "./Profile/UserProfile";
 import AddMovie from "./components/Movies/AddMovie";
 import AdminProfile from "./Profile/AdminProfile";
+import "./App.css";
 
 
 function App() {
@@ -26,9 +27,9 @@ function App() {
     }
   }, [dispatch]);
   return (
-    <div>
+    <div className="app-shell">
       <Header />
-      <section>
+      <section className="app-content">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<Movies />} />

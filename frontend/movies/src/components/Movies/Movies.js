@@ -13,25 +13,47 @@ const Movies = () => {
   }, []);
 
   return (
-    <Box margin={"auto"} marginTop={4}>
-      <Typography
-        margin={"auto"}
-        variant="h4"
-        padding={2}
-        width="40%"
-        bgcolor={"#900C3F"}
-        color="white"
-        textAlign={"center"}
-      >
-        All Movies
-      </Typography>
+    <Box margin="auto" marginTop={1}>
       <Box
-        width={"100%"}
+        sx={{
+          borderRadius: 6,
+          p: { xs: 3, md: 4 },
+          border: "1px solid rgba(255,255,255,0.08)",
+          background:
+            "linear-gradient(135deg, rgba(11,20,31,0.82), rgba(15,27,42,0.9))",
+          boxShadow: "0 26px 70px rgba(0,0,0,0.26)",
+        }}
+      >
+        <Typography
+          sx={{
+            color: "#6dd3ff",
+            textTransform: "uppercase",
+            letterSpacing: "0.18em",
+            fontSize: "0.76rem",
+            fontWeight: 800,
+          }}
+        >
+          Movie catalog
+        </Typography>
+        <Typography
+          marginTop={1}
+          variant="h3"
+          sx={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: { xs: "2rem", md: "3rem" },
+          }}
+        >
+          All Movies
+        </Typography>
+      </Box>
+      <Box
+        width="100%"
         margin="auto"
-        marginTop={5}
-        display={"flex"}
-        justifyContent="flex-start"
-        flexWrap={"wrap"}
+        marginTop={4}
+        display="flex"
+        justifyContent={{ xs: "center", lg: "flex-start" }}
+        flexWrap="wrap"
+        gap={2}
       >
         {movies.map((movie) => (
           <MovieItem

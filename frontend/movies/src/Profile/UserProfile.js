@@ -7,6 +7,7 @@ import {
 } from "../api-helpers/api-helpers";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
+  Divider,
   IconButton,
   List,
   ListItem,
@@ -34,80 +35,100 @@ const UserProfile = () => {
       .catch((err) => console.log(err.message));
   };
   return (
-    <Box width={"100%"} display="flex">
+    <Box width="100%" display="flex" flexDirection={{ xs: "column", md: "row" }}>
       <Fragment>
         {" "}
         {user && (
           <Box
+            display="flex"
             flexDirection={"column"}
             justifyContent="center"
             alignItems={"center"}
-            width={"30%"}
+            width={{ xs: "100%", md: "32%" }}
             padding={3}
+            borderRadius={6}
+            border="1px solid rgba(255,255,255,0.08)"
+            bgcolor="rgba(11,20,31,0.84)"
+            boxShadow="0 24px 60px rgba(0,0,0,0.28)"
           >
             <AccountCircleIcon
-              sx={{ fontSize: "10rem", textAlign: "center", ml: 3 }}
+              sx={{ fontSize: "8rem", textAlign: "center", color: "#6dd3ff" }}
             />
             <Typography
               padding={1}
-              width={"auto"}
+              width="100%"
               textAlign={"center"}
-              border={"1px solid #ccc"}
-              borderRadius={6}
+              border={"1px solid rgba(255,255,255,0.08)"}
+              borderRadius={4}
+              bgcolor="rgba(255,255,255,0.03)"
             >
               Name: {user.name}
             </Typography>
             <Typography
               mt={1}
               padding={1}
-              width={"auto"}
+              width="100%"
               textAlign={"center"}
-              border={"1px solid #ccc"}
-              borderRadius={6}
+              border={"1px solid rgba(255,255,255,0.08)"}
+              borderRadius={4}
+              bgcolor="rgba(255,255,255,0.03)"
             >
               Email: {user.email}
             </Typography>
           </Box>
         )}
         {bookings.length > 0 && (
-          <Box width={"70%"} display="flex" flexDirection={"column"}>
+          <Box
+            width={{ xs: "100%", md: "68%" }}
+            display="flex"
+            flexDirection={"column"}
+            ml={{ xs: 0, md: 3 }}
+            mt={{ xs: 3, md: 0 }}
+            p={{ xs: 3, md: 4 }}
+            borderRadius={6}
+            border="1px solid rgba(255,255,255,0.08)"
+            bgcolor="rgba(11,20,31,0.84)"
+            boxShadow="0 24px 60px rgba(0,0,0,0.28)"
+          >
             <Typography
               variant="h3"
-              fontFamily={"verdana"}
-              textAlign="center"
-              padding={2}
+              sx={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                textAlign: "center",
+                pb: 2,
+                fontSize: { xs: "2rem", md: "2.6rem" },
+              }}
             >
               Bookings
             </Typography>
-            <Box
-              margin={"auto"}
-              display="flex"
-              flexDirection={"column"}
-              width="80%"
-            >
+            <Divider sx={{ borderColor: "rgba(255,255,255,0.08)", mb: 2 }} />
+            <Box margin={"auto"} display="flex" flexDirection={"column"} width="100%">
               <List>
                 {bookings.map((booking) => (
                   <ListItem
                     key={booking._id}
                     sx={{
-                      bgcolor: "#00d386",
+                      bgcolor: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.08)",
                       color: "white",
                       textAlign: "center",
-                      margin: 1,
+                      marginY: 1,
+                      borderRadius: 4,
+                      flexWrap: "wrap",
                     }}
                   >
                     <ListItemText
-                      sx={{ margin: 1, width: "auto", textAlign: "left" }}
+                      sx={{ margin: 1, minWidth: 180, textAlign: "left" }}
                     >
                       Movie: {booking.movie.title}
                     </ListItemText>
                     <ListItemText
-                      sx={{ margin: 1, width: "auto", textAlign: "left" }}
+                      sx={{ margin: 1, minWidth: 120, textAlign: "left" }}
                     >
                       Seat: {booking.seatNumber}
                     </ListItemText>
                     <ListItemText
-                      sx={{ margin: 1, width: "auto", textAlign: "left" }}
+                      sx={{ margin: 1, minWidth: 170, textAlign: "left" }}
                     >
                       Date: {new Date(booking.date).toDateString()}
                     </ListItemText>
